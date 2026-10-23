@@ -3,7 +3,10 @@
 Community transportation platform connecting vulnerable individuals with volunteer drivers.
 Bilingual (FR/EN) web application + Android mobile app.
 
+Live demo: https://demo.drivers4u.online
 
+
+Note: this application has been created in part with an AI.
 ---
 
 ## Tech stack
@@ -89,6 +92,13 @@ node backend/scripts/seed-demo-ca.js
 ```
 
 Demo accounts and credentials are provided separately.
+Demo accounts (password: `Demo2026!`):
+
+| Role | Email |
+|---|---|
+| Operator | operator1@drivers4u.online |
+| Client | client1@drivers4u.online |
+| Driver (approved) | driver1@drivers4u.online |
 
 ---
 
