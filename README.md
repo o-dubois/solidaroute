@@ -88,14 +88,7 @@ After setup, seed a realistic dataset (Quebec City area):
 node backend/scripts/seed-demo-ca.js
 ```
 
-Demo accounts (password: `Demo2026!`):
-
-| Role | Email |
-|---|---|
-| Superadmin | admin@drivers4u.online |
-| Operator | operator1@drivers4u.online |
-| Client | client1@drivers4u.online |
-| Driver (approved) | driver1@drivers4u.online |
+Demo accounts and credentials are provided separately.
 
 ---
 
