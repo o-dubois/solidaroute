@@ -1,0 +1,61 @@
+<!-- ============================================================
+     Template: Trip departure reminder — driver
+     Variables:
+       {{DRIVER_FIRST}}     — driver first name
+       {{MSG_TITLE}}        — "Rappel de trajet" or "Trip reminder"
+       {{MSG_INTRO}}        — intro sentence
+       {{PICKUP}}           — pickup address
+       {{DROPOFF}}          — drop-off address
+       {{DEPARTURE}}        — formatted date and time
+       {{RETURN_ROW}}       — return trip row (empty for one-way)
+       {{PASSENGERS_ROW}}   — passenger count row
+       {{TRIP_NUMBER}}      — trip number (digits only)
+       {{LABEL_PICKUP}}     — "Départ" or "Pickup"
+       {{LABEL_DROPOFF}}    — "Arrivée" or "Drop-off"
+       {{LABEL_DEPARTURE}}  — "Date et heure" or "Date and time"
+       {{CLIENT_NAME}}      — client first + last name
+       {{CLIENT_PHONE_ROW}} — phone row or empty string
+       {{LABEL_CLIENT}}     — "Client" or "Client"
+       {{LABEL_PHONE}}      — "Téléphone" or "Phone"
+       {{MSG_REMINDER}}     — "N'oubliez pas…" or "Don't forget…"
+       {{CONTACT_EMAIL}}    — support contact address
+       {{MSG_CONTACT}}      — contact prompt sentence
+============================================================ -->
+
+<h1 style="margin:0 0 8px;font-size:22px;color:#111827;font-weight:700;">
+  ⏰ {{MSG_TITLE}}, {{DRIVER_FIRST}} !
+</h1>
+
+<p style="margin:0 0 16px;font-size:15px;color:#6b7280;line-height:1.6;">
+  {{MSG_INTRO}}
+</p>
+
+<!-- Trip block -->
+<table style="width:100%;border-radius:8px;background:#f0fdfa;border:1px solid #99f6e4;
+              margin:16px 0;padding:16px;" cellpadding="8">
+  <tr><td style="font-size:13px;color:#0f766e;line-height:1.8;">
+    <strong>📍 {{LABEL_PICKUP}} :</strong> {{PICKUP}}<br>
+    <strong>🏁 {{LABEL_DROPOFF}} :</strong> {{DROPOFF}}<br>
+    <strong>📅 {{LABEL_DEPARTURE}} :</strong> {{DEPARTURE}}<br>
+    {{RETURN_ROW}}
+    {{PASSENGERS_ROW}}
+    <strong>Nº :</strong> T-{{TRIP_NUMBER}}
+  </td></tr>
+</table>
+
+<!-- Client block -->
+<table style="width:100%;border-radius:8px;background:#fdf4ff;border:1px solid #e9d5ff;
+              margin:0 0 16px;padding:16px;" cellpadding="8">
+  <tr><td style="font-size:13px;color:#7e22ce;line-height:1.8;">
+    <strong>👤 {{LABEL_CLIENT}} :</strong> {{CLIENT_NAME}}<br>
+    {{CLIENT_PHONE_ROW}}
+  </td></tr>
+</table>
+
+<p style="margin:0 0 12px;font-size:13px;color:#374151;line-height:1.5;">
+  {{MSG_REMINDER}}
+</p>
+
+<p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.5;">
+  {{MSG_CONTACT}} <a href="mailto:{{CONTACT_EMAIL}}" style="color:#0f766e;">{{CONTACT_EMAIL}}</a>
+</p>

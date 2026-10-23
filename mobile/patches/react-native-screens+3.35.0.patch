@@ -1,0 +1,77 @@
+diff --git a/node_modules/react-native-screens/android/src/main/java/com/swmansion/rnscreens/ScreenContainer.kt b/node_modules/react-native-screens/android/src/main/java/com/swmansion/rnscreens/ScreenContainer.kt
+index cf44d7d..42622c4 100644
+--- a/node_modules/react-native-screens/android/src/main/java/com/swmansion/rnscreens/ScreenContainer.kt
++++ b/node_modules/react-native-screens/android/src/main/java/com/swmansion/rnscreens/ScreenContainer.kt
+@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentManager
+ import androidx.fragment.app.FragmentTransaction
+ import com.facebook.react.ReactRootView
+ import com.facebook.react.bridge.ReactContext
+-import com.facebook.react.modules.core.ChoreographerCompat
++import android.view.Choreographer
+ import com.facebook.react.modules.core.ReactChoreographer
+ import com.facebook.react.uimanager.ThemedReactContext
+ import com.facebook.react.uimanager.UIManagerHelper
+@@ -30,8 +30,8 @@ open class ScreenContainer(
+     private var isAttached = false
+     private var needsUpdate = false
+     private var isLayoutEnqueued = false
+-    private val layoutCallback: ChoreographerCompat.FrameCallback =
+-        object : ChoreographerCompat.FrameCallback() {
++    private val layoutCallback: Choreographer.FrameCallback =
++        object : Choreographer.FrameCallback {
+             override fun doFrame(frameTimeNanos: Long) {
+                 isLayoutEnqueued = false
+                 measure(
+diff --git a/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenShadowNode.cpp b/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenShadowNode.cpp
+index 506babc..641828a 100644
+--- a/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenShadowNode.cpp
++++ b/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenShadowNode.cpp
+@@ -15,9 +15,9 @@ Point RNSScreenShadowNode::getContentOriginOffset(
+   return {contentOffset.x, contentOffset.y};
+ }
+ 
+-std::optional<std::reference_wrapper<const ShadowNode::Shared>>
++std::optional<std::reference_wrapper<const std::shared_ptr<const ShadowNode>>>
+ findHeaderConfigChild(const YogaLayoutableShadowNode &screenShadowNode) {
+-  for (const ShadowNode::Shared &child : screenShadowNode.getChildren()) {
++  for (const std::shared_ptr<const ShadowNode> &child : screenShadowNode.getChildren()) {
+     if (std::strcmp(child->getComponentName(), "RNSScreenStackHeaderConfig") ==
+         0) {
+       return {std::cref(child)};
+@@ -82,7 +82,7 @@ std::optional<float> findHeaderHeight(
+ }
+ #endif // ANDROID
+ 
+-void RNSScreenShadowNode::appendChild(const ShadowNode::Shared &child) {
++void RNSScreenShadowNode::appendChild(const std::shared_ptr<const ShadowNode> &child) {
+   YogaLayoutableShadowNode::appendChild(child);
+ #ifdef ANDROID
+   const auto &stateData = getStateData();
+diff --git a/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenShadowNode.h b/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenShadowNode.h
+index 6b4b72e..3379f89 100644
+--- a/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenShadowNode.h
++++ b/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenShadowNode.h
+@@ -28,7 +28,7 @@ class JSI_EXPORT RNSScreenShadowNode final : public ConcreteViewShadowNode<
+ 
+   Point getContentOriginOffset(bool includeTransform) const override;
+ 
+-  void appendChild(const ShadowNode::Shared &child) override;
++  void appendChild(const std::shared_ptr<const ShadowNode> &child) override;
+ 
+   void layout(LayoutContext layoutContext) override;
+ 
+diff --git a/node_modules/react-native-screens/cpp/RNSScreenRemovalListener.cpp b/node_modules/react-native-screens/cpp/RNSScreenRemovalListener.cpp
+index e634a46..7f3c9b2 100644
+--- a/node_modules/react-native-screens/cpp/RNSScreenRemovalListener.cpp
++++ b/node_modules/react-native-screens/cpp/RNSScreenRemovalListener.cpp
+@@ -10,8 +10,9 @@ std::optional<MountingTransaction> RNSScreenRemovalListener::pullTransaction(
+   for (const ShadowViewMutation &mutation : mutations) {
+     if (mutation.type == ShadowViewMutation::Type::Remove &&
+         mutation.oldChildShadowView.componentName != nullptr &&
+-        strcmp(mutation.parentShadowView.componentName, "RNSScreenStack") ==
++        strcmp(mutation.oldChildShadowView.componentName, "RNSScreen") ==
+             0) {
++      // parentShadowView removed in RN 0.78+; final filter applied in NativeProxy
+       listenerFunction_(mutation.oldChildShadowView.tag);
+     }
+   }

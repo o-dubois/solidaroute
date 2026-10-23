@@ -1,0 +1,6 @@
+{
+  "name": "react-native-screens",
+  "version": "4.23.0",
+  "description": "No-native stub — replaces react-native-screens to avoid C++ build failures on RN 0.83.4",
+  "main": "index.js"
+}

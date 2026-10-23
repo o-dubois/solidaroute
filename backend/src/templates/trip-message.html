@@ -1,0 +1,54 @@
+<!-- ============================================================
+     Template: Trip message notification
+     Variables:
+       {{RECIPIENT_FIRST}} — recipient's first name
+       {{SENDER_NAME}}     — full name of the sender
+       {{TRIP_NUMBER}}     — trip number (without T- prefix)
+       {{PICKUP}}          — pickup address
+       {{DROPOFF}}         — drop-off address
+       {{MSG_BODY}}        — the message text
+       {{APP_LINK}}        — link to open the messages page
+       {{MSG_GREETING}}    — "Bonjour" or "Hello"
+       {{MSG_INTRO}}       — intro sentence (translated, includes sender name + trip number)
+       {{BTN_REPLY}}       — button label
+       {{MSG_FOOTER}}      — footer sentence about replying in-app only
+============================================================ -->
+
+<h1 style="margin:0 0 8px;font-size:22px;color:#111827;font-weight:700;">
+  {{MSG_GREETING}}, {{RECIPIENT_FIRST}} ! 💬
+</h1>
+
+<p style="margin:0 0 16px;font-size:15px;color:#6b7280;line-height:1.6;">
+  {{MSG_INTRO}}
+</p>
+
+<!-- Trip reference block -->
+<table style="width:100%;border-radius:8px;background:#f0fdfa;border:1px solid #99f6e4;
+              margin:0 0 16px;padding:16px;" cellpadding="8">
+  <tr><td style="font-size:13px;color:#0f766e;line-height:1.8;">
+    <strong>Nº :</strong> T-{{TRIP_NUMBER}}<br>
+    <strong>📍</strong> {{PICKUP}}<br>
+    <strong>🏁</strong> {{DROPOFF}}
+  </td></tr>
+</table>
+
+<!-- Message body -->
+<table style="width:100%;border-radius:8px;background:#f9fafb;border:1px solid #e5e7eb;
+              margin:0 0 20px;padding:16px;" cellpadding="8">
+  <tr><td style="font-size:15px;color:#111827;line-height:1.7;white-space:pre-wrap;">
+    {{MSG_BODY}}
+  </td></tr>
+</table>
+
+<!-- CTA button -->
+<div style="text-align:center;margin:0 0 20px;">
+  <a href="{{APP_LINK}}"
+     style="display:inline-block;background:#0d9488;color:#ffffff;text-decoration:none;
+            font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;">
+    {{BTN_REPLY}}
+  </a>
+</div>
+
+<p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.5;text-align:center;">
+  {{MSG_FOOTER}}
+</p>

@@ -1,0 +1,35 @@
+{
+  "name": "@solidaroute/backend",
+  "version": "5.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "jest --runInBand --forceExit",
+    "test:watch": "jest --runInBand --watch",
+    "reset-password": "node scripts/reset-password.js",
+    "charge-recovery": "node scripts/charge-completed-trips.js",
+    "payment-job": "node scripts/payment-job.js",
+    "ticket-job": "node scripts/ticket-lifecycle-job.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.1.1",
+    "nodemailer": "^8.0.2",
+    "pg": "^8.11.3",
+    "stripe": "^17.7.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.4"
+  }
+}

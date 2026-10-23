@@ -1,0 +1,45 @@
+<!-- ============================================================
+     Gabarit : Info au client — aucun conducteur trouvé, trajet annulé
+     Variables :
+       {{CLIENT_FIRST}}      — prénom du client
+       {{MSG_GREETING}}      — "Nous sommes désolés" ou "We're sorry"
+       {{MSG_INTRO}}         — explication (aucun conducteur disponible)
+       {{MSG_CONTACT}}       — invitation à recontacter / réessayer
+       {{CONTACT_EMAIL}}     — email de contact de la plateforme
+       {{PICKUP}}            — adresse de départ
+       {{DROPOFF}}           — adresse d'arrivée
+       {{DEPARTURE}}         — date/heure formatée
+       {{TRIP_NUMBER}}       — numéro du trajet
+       {{LABEL_PICKUP}}      — "Départ" ou "Pickup"
+       {{LABEL_DROPOFF}}     — "Arrivée" ou "Drop-off"
+       {{LABEL_DEPARTURE}}   — "Date et heure" ou "Date and time"
+       {{LABEL_CONTACT}}     — "Contactez-nous" ou "Contact us"
+============================================================ -->
+
+<h1 style="margin:0 0 8px;font-size:22px;color:#111827;font-weight:700;">
+  {{MSG_GREETING}}, {{CLIENT_FIRST}}
+</h1>
+
+<p style="margin:0 0 16px;font-size:15px;color:#6b7280;line-height:1.6;">
+  {{MSG_INTRO}}
+</p>
+
+<!-- Bloc trajet -->
+<table style="width:100%;border-radius:8px;background:#f9fafb;border:1px solid #e5e7eb;
+              margin:16px 0;padding:16px;" cellpadding="8">
+  <tr><td style="font-size:13px;color:#6b7280;line-height:1.8;">
+    <strong>📍 {{LABEL_PICKUP}} :</strong> {{PICKUP}}<br>
+    <strong>🏁 {{LABEL_DROPOFF}} :</strong> {{DROPOFF}}<br>
+    <strong>📅 {{LABEL_DEPARTURE}} :</strong> {{DEPARTURE}}<br>
+    <strong>Nº :</strong> T-{{TRIP_NUMBER}}
+  </td></tr>
+</table>
+
+<p style="margin:0 0 8px;font-size:14px;color:#6b7280;line-height:1.6;">
+  {{MSG_CONTACT}}
+</p>
+
+<p style="margin:0;font-size:13px;color:#9ca3af;">
+  {{LABEL_CONTACT}} :
+  <a href="mailto:{{CONTACT_EMAIL}}" style="color:#0d9488;">{{CONTACT_EMAIL}}</a>
+</p>

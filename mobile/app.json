@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "SolidaRoute",
+    "slug": "solidaroute",
+    "version": "1.0.4",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "org.solidaroute.app"
+    },
+    "android": {
+      "package": "org.solidaroute.app",
+      "usesCleartextTraffic": false
+    },
+    "extra": {
+      "apiUrl": "https://demo.drivers4u.online/api",
+      "eas": {
+        "projectId": "7e5c94c5-d0df-4d56-afa1-ea2c2a8d8067"
+      }
+    },
+    "plugins": [
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant.org.solidaroute.app",
+          "enableGooglePay": false
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+# ── Dependencies ──────────────────────────────────────────────────────────────
+node_modules/
+
+# ── Environment files (contain real credentials — NEVER commit) ───────────────
+.env
+.env.local
+.env.bak
+.env.*.local
+backend/.env
+backend/.env.bak
+backend/.env.test
+
+# Keep example/template files
+!backend/.env.production.example
+!backend/.env.test.example
+!mobile/.env.example
+
+# ── Build output ──────────────────────────────────────────────────────────────
+frontend/dist/
+mobile/dist/
+mobile/web-build/
+build/
+dist/
+
+# ── Expo / React Native ───────────────────────────────────────────────────────
+.expo/
+mobile/.expo/
+mobile/android/build/
+mobile/android/app/build/
+mobile/android/.gradle/
+mobile/ios/build/
+mobile/ios/Pods/
+mobile/ios/DerivedData/
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+logs/
+backend/logs/
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Editor ────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Root-level leftovers (superseded by mobile/ and backend/) ─────────────────
+/App.js
+/AppMain.jsx
+/app.json
+/src/
+/nginx.conf
+/babel.config.js
+/metro.config.js
+/react-native.config.js
+/eas.json
+/package.json
+/package-lock.json
+/packages/
+/patches/
+
+# ── Snapshot archives and SQL dumps (root-level only) ─────────────────────────
+/*.zip
+/*.sql
+/*.sql.bad
+mobile/fix-patch.zip
+
+# ── Database migrations (schema.sql in backend/ is the canonical reference) ───
+backend/src/db/migrations/
+
+# ── Claude Code settings ───────────────────────────────────────────────────────
+.claude/
+
+# ── Documentation ─────────────────────────────────────────────────────────────
+Documentation/
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+backend/resetpw.js
+backend/REGISTRATION_DISABLED
+solidaroute_prompt_v17.md
+*.tsbuildinfo

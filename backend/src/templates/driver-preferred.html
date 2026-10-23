@@ -1,0 +1,82 @@
+<!-- ============================================================
+     Gabarit : Notification au conducteur sélectionné
+     Variables :
+       {{DRIVER_FIRST}}      — prénom du conducteur
+       {{RESPONSE_HOURS}}    — heures pour répondre (ex: 6)
+       {{ACCEPT_LINK}}       — lien bouton Accepter
+       {{DECLINE_LINK}}      — lien bouton Refuser
+       {{APP_LINK}}          — lien vers l'application
+       {{PICKUP}}            — adresse de départ
+       {{DROPOFF}}           — adresse d'arrivée
+       {{DEPARTURE}}         — date/heure de départ formatée
+       {{RETURN_ROW}}        — ligne retour (vide si aller simple)
+       {{PASSENGERS_ROW}}    — ligne passagers (vide si 1 passager)
+       {{TRIP_NUMBER}}       — numéro du trajet (ex: 1042)
+       {{LABEL_PICKUP}}      — "Départ" ou "Pickup"
+       {{LABEL_DROPOFF}}     — "Arrivée" ou "Drop-off"
+       {{LABEL_DEPARTURE}}   — "Date et heure" ou "Date and time"
+       {{MSG_SELECTED}}      — phrase d'intro (FR ou EN)
+       {{MSG_DEADLINE}}      — phrase délai (FR ou EN)
+       {{MSG_FALLBACK}}      — phrase si pas de boutons (FR ou EN)
+       {{BTN_ACCEPT}}        — texte bouton Accepter
+       {{BTN_DECLINE}}       — texte bouton Refuser
+       {{LINK_LABEL}}        — "Ou connectez-vous..." (FR ou EN)
+============================================================ -->
+
+<h1 style="margin:0 0 8px;font-size:22px;color:#111827;font-weight:700;">
+  {{MSG_GREETING}} {{DRIVER_FIRST}} 👋
+</h1>
+
+<p style="margin:0 0 16px;font-size:15px;color:#6b7280;line-height:1.6;">
+  {{MSG_SELECTED}}
+</p>
+
+<!-- Bloc trajet -->
+<table style="width:100%;border-radius:8px;background:#f0fdfa;border:1px solid #99f6e4;
+              margin:16px 0;padding:16px;" cellpadding="8">
+  <tr><td style="font-size:13px;color:#0f766e;line-height:1.8;">
+    <strong>📍 {{LABEL_PICKUP}} :</strong> {{PICKUP}}<br>
+    <strong>🏁 {{LABEL_DROPOFF}} :</strong> {{DROPOFF}}<br>
+    <strong>📅 {{LABEL_DEPARTURE}} :</strong> {{DEPARTURE}}<br>
+    {{RETURN_ROW}}
+    {{PASSENGERS_ROW}}
+    <strong>Nº :</strong> T-{{TRIP_NUMBER}}
+  </td></tr>
+</table>
+
+<p style="margin:0 0 16px;font-size:14px;color:#6b7280;line-height:1.6;">
+  {{MSG_DEADLINE}}
+</p>
+
+<!-- Boutons Accepter / Refuser -->
+<table width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0;">
+  <tr>
+    <td align="center" style="padding:4px;">
+      <a href="{{ACCEPT_LINK}}"
+         style="display:inline-block;background:#0d9488;color:#ffffff;
+                font-size:15px;font-weight:600;text-decoration:none;
+                padding:12px 32px;border-radius:10px;margin:4px;">
+        {{BTN_ACCEPT}}
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="padding:4px;">
+      <a href="{{DECLINE_LINK}}"
+         style="display:inline-block;background:#ffffff;color:#dc2626;
+                font-size:15px;font-weight:600;text-decoration:none;
+                padding:12px 32px;border-radius:10px;margin:4px;
+                border:2px solid #dc2626;">
+        {{BTN_DECLINE}}
+      </a>
+    </td>
+  </tr>
+</table>
+
+<p style="margin:0 0 16px;font-size:12px;color:#9ca3af;text-align:center;">
+  {{LINK_LABEL}} <a href="{{APP_LINK}}" style="color:#0d9488;">{{APP_LINK}}</a>
+</p>
+
+<p style="margin:0;font-size:13px;color:#9ca3af;line-height:1.5;">
+  {{MSG_FALLBACK}}
+</p>

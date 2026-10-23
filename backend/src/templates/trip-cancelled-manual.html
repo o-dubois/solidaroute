@@ -1,0 +1,46 @@
+<!-- ============================================================
+     Gabarit : Notification d'annulation manuelle de trajet
+     Envoyé à l'autre participant (conducteur si le client annule,
+     client si le conducteur annule).
+
+     Variables :
+       {{RECIPIENT_FIRST}}   — prénom du destinataire
+       {{MSG_GREETING}}      — "Trajet annulé" ou "Trip cancelled"
+       {{MSG_INTRO}}         — phrase d'introduction (qui a annulé)
+       {{LABEL_REASON}}      — "Raison" ou "Reason"
+       {{REASON}}            — texte fourni par la personne qui annule
+       {{PICKUP}}            — adresse de départ
+       {{DROPOFF}}           — adresse d'arrivée
+       {{DEPARTURE}}         — date/heure formatée
+       {{TRIP_NUMBER}}       — numéro du trajet
+       {{LABEL_PICKUP}}      — "Départ" ou "Pickup"
+       {{LABEL_DROPOFF}}     — "Arrivée" ou "Drop-off"
+       {{LABEL_DEPARTURE}}   — "Date et heure" ou "Date and time"
+============================================================ -->
+
+<h1 style="margin:0 0 8px;font-size:22px;color:#111827;font-weight:700;">
+  {{MSG_GREETING}}, {{RECIPIENT_FIRST}}
+</h1>
+
+<p style="margin:0 0 16px;font-size:15px;color:#6b7280;line-height:1.6;">
+  {{MSG_INTRO}}
+</p>
+
+<!-- Raison de l'annulation -->
+<table style="width:100%;border-radius:8px;background:#fef2f2;border:1px solid #fecaca;
+              margin:0 0 16px;padding:16px;" cellpadding="8">
+  <tr><td style="font-size:14px;color:#991b1b;line-height:1.6;">
+    <strong>{{LABEL_REASON}} :</strong> {{REASON}}
+  </td></tr>
+</table>
+
+<!-- Bloc trajet -->
+<table style="width:100%;border-radius:8px;background:#f9fafb;border:1px solid #e5e7eb;
+              margin:0 0 16px;padding:16px;" cellpadding="8">
+  <tr><td style="font-size:13px;color:#6b7280;line-height:1.8;">
+    <strong>📍 {{LABEL_PICKUP}} :</strong> {{PICKUP}}<br>
+    <strong>🏁 {{LABEL_DROPOFF}} :</strong> {{DROPOFF}}<br>
+    <strong>📅 {{LABEL_DEPARTURE}} :</strong> {{DEPARTURE}}<br>
+    <strong>Nº :</strong> T-{{TRIP_NUMBER}}
+  </td></tr>
+</table>
